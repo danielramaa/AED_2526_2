@@ -6,6 +6,8 @@
 
 #include <algorithm>
 #include <numeric>
+#include <ostream>
+#include <sstream>
 #include <unordered_map>
 
 namespace {
@@ -169,4 +171,69 @@ Graph<int> buildInterferenceGraph(const std::vector<Web>& webs) {
         }
     }
     return g;
+}
+
+namespace {
+
+std::string pointsLabel(const Web& w) {
+    std::string s;
+    for (std::size_t i = 0; i < w.points.size(); ++i) {
+        if (i) s.push_back(',');
+        s += std::to_string(w.points[i].line);
+        if (w.points[i].isDef && w.points[i].isLastUse) {
+            // bare — flows through (same convention as output.cpp)
+        } else if (w.points[i].isDef) {
+            s.push_back('+');
+        } else if (w.points[i].isLastUse) {
+            s.push_back('-');
+        }
+    }
+    return s;
+}
+
+} // namespace
+
+void printGraphAscii(std::ostream& os, const std::vector<Web>& webs) {
+    int totalEdges = 0;
+    for (const auto& w : webs) {
+        std::ostringstream neighbours;
+        bool first = true;
+        for (const auto& other : webs) {
+            if (other.id == w.id) continue;
+            if (!websInterfere(w, other)) continue;
+            if (other.id > w.id) ++totalEdges; // count each pair once
+            if (!first) neighbours << ", ";
+            neighbours << "web" << other.id;
+            first = false;
+        }
+        std::string nb = neighbours.str();
+        if (nb.empty()) nb = "(none)";
+
+        os << "  web" << w.id << "  "
+           << "points: " << pointsLabel(w) << "\n"
+           << "        interferes with: " << nb << "\n";
+    }
+    os << "  total vertices: " << webs.size()
+       << "   total edges: " << totalEdges << "\n";
+}
+
+void writeGraphDot(std::ostream& os, const std::vector<Web>& webs,
+                   const std::string& title) {
+    os << "graph " << title << " {\n";
+    os << "  // Render with: dot -Tpng " << title << ".dot -o " << title << ".png\n";
+    os << "  node [shape=ellipse, style=filled, fillcolor=\"#cfe8ff\","
+       << " fontname=\"Helvetica\"];\n";
+    os << "  edge [color=\"#444444\"];\n";
+    for (const auto& w : webs) {
+        os << "  web" << w.id << " [label=\"web" << w.id
+           << "\\n" << pointsLabel(w) << "\"];\n";
+    }
+    for (std::size_t i = 0; i < webs.size(); ++i) {
+        for (std::size_t j = i + 1; j < webs.size(); ++j) {
+            if (websInterfere(webs[i], webs[j])) {
+                os << "  web" << webs[i].id << " -- web" << webs[j].id << ";\n";
+            }
+        }
+    }
+    os << "}\n";
 }

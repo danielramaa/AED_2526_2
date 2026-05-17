@@ -55,6 +55,8 @@ void printMenu(std::ostream& os) {
        << "  5) Load / parse input files\n"
        << "  6) View parsed data\n"
        << "  7) Run register allocation\n"
+       << "  8) Show interference graph (ASCII)\n"
+       << "  9) Export interference graph (DOT)\n"
        << "  0) Exit\n"
        << "Choice> ";
 }
@@ -188,6 +190,36 @@ void handleInteractiveChoice(AppState& s, const std::string& choice, bool& shoul
         }
     }
     else if (choice == "7") runAllocation(s, std::cerr);
+    else if (choice == "8") {
+        if (!s.variablesLoaded) {
+            std::cout << "Inputs are not loaded yet (use option 5).\n";
+        } else {
+            auto webs = buildWebs(s.variables);
+            std::cout << "\nInterference graph (ASCII):\n";
+            printGraphAscii(std::cout, webs);
+        }
+    }
+    else if (choice == "9") {
+        if (!s.variablesLoaded) {
+            std::cout << "Inputs are not loaded yet (use option 5).\n";
+        } else {
+            std::string path = promptLine("DOT output file (e.g. graph.dot): ");
+            if (path.empty()) {
+                std::cout << "No file given; aborting export.\n";
+            } else {
+                std::ofstream out(path);
+                if (!out) {
+                    std::cerr << "Error: could not open " << path << "\n";
+                } else {
+                    auto webs = buildWebs(s.variables);
+                    writeGraphDot(out, webs);
+                    std::cout << "DOT written to " << path << "\n"
+                              << "Render with: dot -Tpng " << path
+                              << " -o " << path << ".png\n";
+                }
+            }
+        }
+    }
     else if (choice == "0") shouldExit = true;
     else std::cout << "Unknown choice: \"" << choice << "\"\n";
 }

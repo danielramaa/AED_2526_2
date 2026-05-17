@@ -153,14 +153,18 @@ int pickHighestDegreeWeb(const std::vector<Web>& webs, const std::set<int>& excl
 }
 
 /// Picks the multi-sub-web web with the highest degree, ready to be sliced.
-int pickHighestDegreeMultiSubWeb(const std::vector<Web>& webs) {
+/// Optionally ignores webs in @p excluded (already spilled).
+int pickHighestDegreeMultiSubWeb(const std::vector<Web>& webs,
+                                 const std::set<int>& excluded = {}) {
     int best = -1;
     int bestDeg = -1;
     for (std::size_t i = 0; i < webs.size(); ++i) {
         if (webs[i].subWebIds.size() < 2) continue;
+        if (excluded.count(static_cast<int>(i))) continue;
         int deg = 0;
         for (std::size_t j = 0; j < webs.size(); ++j) {
             if (j == i) continue;
+            if (excluded.count(static_cast<int>(j))) continue;
             if (websInterfere(webs[i], webs[j])) ++deg;
         }
         if (deg > bestDeg) {
@@ -292,29 +296,33 @@ AllocationResult allocateFree(const InputData& input) {
                                      regsUsed, msg.str());
         }
 
-        // Colouring failed: pick the highest-degree non-excluded web and
-        // decide what to do with it.
-        int candidate = pickHighestDegreeWeb(webs, excluded);
-        if (candidate < 0) break;   // nothing more we can do
-
-        if (webs[candidate].subWebIds.size() >= 2) {
+        // Colouring failed: we prefer splitting over spilling because
+        // splitting keeps the value in registers. Strategy:
+        //   1) try to find a splittable web (>= 2 sub-webs) that still
+        //      participates in an interference — if any, split it;
+        //   2) otherwise fall back to spilling the highest-degree
+        //      atomic web.
+        int splitCandidate = pickHighestDegreeMultiSubWeb(webs, excluded);
+        if (splitCandidate >= 0 && groups[splitCandidate].size() >= 2) {
             // SPLIT: break the chosen web's group into atomic sub-webs.
             // Keep the first sub-web in the original slot to preserve
             // determinism; append every other sub-web as its own group.
-            std::vector<int> targetSubs = groups[candidate];
-            groups[candidate] = { targetSubs.front() };
+            std::vector<int> targetSubs = groups[splitCandidate];
+            groups[splitCandidate] = { targetSubs.front() };
             for (std::size_t k = 1; k < targetSubs.size(); ++k) {
                 groups.push_back({ targetSubs[k] });
             }
             ++splitCount;
-        } else {
-            // SPILL: the chosen web is already a single sub-web, so
-            // there is nothing left to slice — commit it to memory.
-            for (int sid : webs[candidate].subWebIds) {
-                spilledSubWebIds.insert(sid);
-            }
-            ++spillCount;
+            continue;
         }
+
+        // No splittable candidate — fall back to spilling.
+        int spillCandidate = pickHighestDegreeWeb(webs, excluded);
+        if (spillCandidate < 0) break;   // nothing more we can do
+        for (int sid : webs[spillCandidate].subWebIds) {
+            spilledSubWebIds.insert(sid);
+        }
+        ++spillCount;
     }
 
     // We only get here in pathological cases (e.g. K == 0 with non-empty

@@ -98,6 +98,8 @@ $(function(){initNavTree('web_8cpp.html','',''); });
 <div class="textblock"><code>#include &quot;<a class="el" href="web_8h_source.html">web.h</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
+<code>#include &lt;ostream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
@@ -114,6 +116,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a61bc1c5f69fe7bbc4e02f6505d543c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pairwise interference test using the def/last-use exception described in §2.5 of the handout: two webs do NOT interfere at a shared point X iff one of them is being defined-only there and the other is being last-used-only there.  <br /></td></tr>
 <tr class="memitem:a117900f923d80cc1884eaa64b9daf0fb" id="r_a117900f923d80cc1884eaa64b9daf0fb"><td class="memItemLeft"><a class="el" href="classGraph.html">Graph</a>&lt; int &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a117900f923d80cc1884eaa64b9daf0fb">buildInterferenceGraph</a> (const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs)</td></tr>
 <tr class="memdesc:a117900f923d80cc1884eaa64b9daf0fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the interference graph on the provided webs using the TP <a class="el" href="classGraph.html">Graph</a> class.  <br /></td></tr>
+<tr class="memitem:a125590bfbfe3f8537911e84d12749dc1" id="r_a125590bfbfe3f8537911e84d12749dc1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a125590bfbfe3f8537911e84d12749dc1">printGraphAscii</a> (std::ostream &amp;os, const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs)</td></tr>
+<tr class="memdesc:a125590bfbfe3f8537911e84d12749dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a human-readable ASCII view of the interference graph to <code class="param">os:</code> one line per web showing its id, points and its list of neighbours.  <br /></td></tr>
+<tr class="memitem:aa6fdcddd09a0dcd803fc9ad217d69556" id="r_aa6fdcddd09a0dcd803fc9ad217d69556"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa6fdcddd09a0dcd803fc9ad217d69556">writeGraphDot</a> (std::ostream &amp;os, const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs, const std::string &amp;title)</td></tr>
+<tr class="memdesc:aa6fdcddd09a0dcd803fc9ad217d69556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits the interference graph in Graphviz DOT format.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structWeb.html" title="A web — a (possibly merged) group of SubWebs assigned a single register (or spilled).">Web</a> construction and interference graph implementation. </p>
@@ -225,6 +231,33 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a125590bfbfe3f8537911e84d12749dc1" name="a125590bfbfe3f8537911e84d12749dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a125590bfbfe3f8537911e84d12749dc1">&#9670;&#160;</a></span>printGraphAscii()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printGraphAscii </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>webs</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints a human-readable ASCII view of the interference graph to <code class="param">os:</code> one line per web showing its id, points and its list of neighbours. </p>
+<div class="fragment"><div class="line">web0  points: 7+,8,9,10-          interferes with: web2</div>
+<div class="line">web1  points: 1+,2,3,4,5,6-       interferes with: (none)</div>
+<div class="line">web2  points: 9+,10,11,...        interferes with: web0</div>
+<div class="line">total vertices: 3   total edges: 1</div>
+</div><!-- fragment --> 
+</div>
+</div>
 <a id="a61bc1c5f69fe7bbc4e02f6505d543c14" name="a61bc1c5f69fe7bbc4e02f6505d543c14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a61bc1c5f69fe7bbc4e02f6505d543c14">&#9670;&#160;</a></span>websInterfere()</h2>
 
@@ -247,6 +280,37 @@ Functions</h2></td></tr>
 <p>Pairwise interference test using the def/last-use exception described in §2.5 of the handout: two webs do NOT interfere at a shared point X iff one of them is being defined-only there and the other is being last-used-only there. </p>
 <p>They DO interfere as soon as any shared point is not such a clean handoff.</p>
 <p>Complexity: O(|A.points| + |B.points|) using the points' sortedness. </p>
+
+</div>
+</div>
+<a id="aa6fdcddd09a0dcd803fc9ad217d69556" name="aa6fdcddd09a0dcd803fc9ad217d69556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6fdcddd09a0dcd803fc9ad217d69556">&#9670;&#160;</a></span>writeGraphDot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void writeGraphDot </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>webs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>title</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;interference&quot;</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Emits the interference graph in Graphviz DOT format. </p>
+<p>Render with:</p>
+<div class="fragment"><div class="line">dot -Tpng graph.dot -o graph.png</div>
+</div><!-- fragment --><p>Each web becomes a node labelled <span class="tt">webN\n&lt;points&gt;</span>; each interference becomes an undirected edge. </p>
 
 </div>
 </div>

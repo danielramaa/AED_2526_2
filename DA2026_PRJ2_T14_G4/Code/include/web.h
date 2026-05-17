@@ -112,4 +112,32 @@ bool websInterfere(const Web& a, const Web& b);
  */
 Graph<int> buildInterferenceGraph(const std::vector<Web>& webs);
 
+/**
+ * @brief Prints a human-readable ASCII view of the interference graph
+ *        to @p os: one line per web showing its id, points and its list
+ *        of neighbours.
+ *
+ * @code
+ *   web0  points: 7+,8,9,10-          interferes with: web2
+ *   web1  points: 1+,2,3,4,5,6-       interferes with: (none)
+ *   web2  points: 9+,10,11,...        interferes with: web0
+ *   total vertices: 3   total edges: 1
+ * @endcode
+ */
+void printGraphAscii(std::ostream& os, const std::vector<Web>& webs);
+
+/**
+ * @brief Emits the interference graph in Graphviz DOT format. Render
+ *        with:
+ *
+ * @code
+ *   dot -Tpng graph.dot -o graph.png
+ * @endcode
+ *
+ * Each web becomes a node labelled `webN\n<points>`; each interference
+ * becomes an undirected edge.
+ */
+void writeGraphDot(std::ostream& os, const std::vector<Web>& webs,
+                   const std::string& title = "interference");
+
 #endif // DA_PRJ2_WEB_H

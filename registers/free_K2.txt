@@ -1,0 +1,3 @@
+# Algoritmo "free" (hibrido split+spill), 2 registos
+registers: 2
+algorithm: free

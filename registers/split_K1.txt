@@ -1,0 +1,3 @@
+# Splitting com ate 1 web partida, 1 registo
+registers: 1
+algorithm: splitting, 1

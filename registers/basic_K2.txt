@@ -1,0 +1,3 @@
+# Algoritmo basico, 2 registos
+registers: 2
+algorithm: basic

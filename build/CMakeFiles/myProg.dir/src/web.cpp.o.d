@@ -174,6 +174,7 @@ CMakeFiles/myProg.dir/src/web.cpp.o: \
  /usr/include/c++/16.1.1/numeric \
  /usr/include/c++/16.1.1/bits/stl_numeric.h \
  /usr/include/c++/16.1.1/pstl/glue_numeric_defs.h \
+ /usr/include/c++/16.1.1/sstream /usr/include/c++/16.1.1/bits/sstream.tcc \
  /usr/include/c++/16.1.1/unordered_map \
  /usr/include/c++/16.1.1/bits/unordered_map.h \
  /usr/include/c++/16.1.1/bits/hashtable.h \

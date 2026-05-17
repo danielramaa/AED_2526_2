@@ -1,0 +1,3 @@
+# Spilling com ate 1 web em memoria, 2 registos
+registers: 2
+algorithm: spilling, 1

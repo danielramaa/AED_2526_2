@@ -9,9 +9,10 @@ var searchData=
   ['pathmatrix_6',['pathMatrix',['../classGraph.html#afb9524726f8f3cda3115a0d03e3f6e09',1,'Graph']]],
   ['pipeline_7',['Pipeline',['../index.html#autotoc_md2',1,'']]],
   ['points_8',['points',['../structLiveRange.html#a4f30ec2658ed5f68bef7efa591fe2737',1,'LiveRange::points'],['../structSubWeb.html#a13a15cd43caf7f6d45d601807ac3ad44',1,'SubWeb::points'],['../structWeb.html#a7d9d640008436fe61bf53e4819764ff8',1,'Web::points']]],
-  ['processing_9',['processing',['../classVertex.html#ae575d4b9a6b1ada3f9626c458c060f54',1,'Vertex']]],
-  ['programming_20project_20ii_20—_20compiler_20register_20allocation_10',['Programming Project II — Compiler Register Allocation',['../index.html',1,'']]],
-  ['programpoint_11',['ProgramPoint',['../structProgramPoint.html',1,'']]],
-  ['project_20ii_20—_20compiler_20register_20allocation_12',['Programming Project II — Compiler Register Allocation',['../index.html',1,'']]],
-  ['project_20layout_13',['Project layout',['../index.html#autotoc_md5',1,'']]]
+  ['printgraphascii_9',['printGraphAscii',['../web_8h.html#a125590bfbfe3f8537911e84d12749dc1',1,'printGraphAscii(std::ostream &amp;os, const std::vector&lt; Web &gt; &amp;webs):&#160;web.cpp'],['../web_8cpp.html#a125590bfbfe3f8537911e84d12749dc1',1,'printGraphAscii(std::ostream &amp;os, const std::vector&lt; Web &gt; &amp;webs):&#160;web.cpp']]],
+  ['processing_10',['processing',['../classVertex.html#ae575d4b9a6b1ada3f9626c458c060f54',1,'Vertex']]],
+  ['programming_20project_20ii_20—_20compiler_20register_20allocation_11',['Programming Project II — Compiler Register Allocation',['../index.html',1,'']]],
+  ['programpoint_12',['ProgramPoint',['../structProgramPoint.html',1,'']]],
+  ['project_20ii_20—_20compiler_20register_20allocation_13',['Programming Project II — Compiler Register Allocation',['../index.html',1,'']]],
+  ['project_20layout_14',['Project layout',['../index.html#autotoc_md5',1,'']]]
 ];

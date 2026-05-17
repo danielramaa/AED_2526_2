@@ -1,0 +1,8 @@
+# Caso construido para forcar o split:
+#  - x tem 2 sub-webs que se fundem (handoff limpo na linha 2)
+#  - apos a fusao, x torna-se o no de maior grau (interfere com v e w)
+#  - com K=1, basic falha. O algoritmo "free" escolhe partir x antes de spillar.
+v: 1+,2-
+w: 3+,4-
+x: 1+,2-
+x: 2+,3,4-
