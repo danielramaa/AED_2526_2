@@ -10,7 +10,7 @@
 
 namespace {
 
-/// Formats a single web point per §3.1 / Figure 11 of the handout.
+/// Formats a single web point per §3.1 
 ///
 /// When a merged web has BOTH `isDef` and `isLastUse` at the same line the
 /// value is being used and redefined on the same instruction (think

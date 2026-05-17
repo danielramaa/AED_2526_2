@@ -12,8 +12,7 @@
 #include <vector>
 
 /**
- * @brief Parses a live-ranges input file (format described in §3.1 of the
- *        project handout).
+ * @brief Parses a live-ranges input file 
  *
  * Lines beginning with `#` and blank lines are ignored. Each non-comment line
  * has the form `name: tok1, tok2, ...` where every `tok` is a non-negative
@@ -36,8 +35,7 @@ bool parseRanges(const std::string& path,
                  std::string& error);
 
 /**
- * @brief Parses a register-configuration file (format described in §3.4 of
- *        the project handout).
+ * @brief Parses a register-configuration file
  *
  * Expected entries: `registers: N` and `algorithm: <kind>[, K]` where
  * `<kind>` is one of `basic`, `spilling`, `splitting`, `free`. Comments

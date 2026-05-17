@@ -1,7 +1,7 @@
 /**
  * @file output.h
  * @brief Output writer: turns an AllocationResult into the text format
- *        specified in §3.5 of the project handout.
+ *        specified
  */
 #ifndef DA_PRJ2_OUTPUT_H
 #define DA_PRJ2_OUTPUT_H

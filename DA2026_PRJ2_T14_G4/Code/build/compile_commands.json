@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/build",
+  "command": "/usr/bin/c++  -I/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/include -std=gnu++17 -o CMakeFiles/myProg.dir/src/main.cpp.o -c /home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/main.cpp",
+  "file": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/main.cpp",
+  "output": "CMakeFiles/myProg.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/build",
+  "command": "/usr/bin/c++  -I/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/include -std=gnu++17 -o CMakeFiles/myProg.dir/src/menu.cpp.o -c /home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/menu.cpp",
+  "file": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/menu.cpp",
+  "output": "CMakeFiles/myProg.dir/src/menu.cpp.o"
+},
+{
+  "directory": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/build",
+  "command": "/usr/bin/c++  -I/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/include -std=gnu++17 -o CMakeFiles/myProg.dir/src/parser.cpp.o -c /home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/parser.cpp",
+  "file": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/parser.cpp",
+  "output": "CMakeFiles/myProg.dir/src/parser.cpp.o"
+},
+{
+  "directory": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/build",
+  "command": "/usr/bin/c++  -I/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/include -std=gnu++17 -o CMakeFiles/myProg.dir/src/web.cpp.o -c /home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/web.cpp",
+  "file": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/web.cpp",
+  "output": "CMakeFiles/myProg.dir/src/web.cpp.o"
+},
+{
+  "directory": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/build",
+  "command": "/usr/bin/c++  -I/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/include -std=gnu++17 -o CMakeFiles/myProg.dir/src/allocator.cpp.o -c /home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/allocator.cpp",
+  "file": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/allocator.cpp",
+  "output": "CMakeFiles/myProg.dir/src/allocator.cpp.o"
+},
+{
+  "directory": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/build",
+  "command": "/usr/bin/c++  -I/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/include -std=gnu++17 -o CMakeFiles/myProg.dir/src/output.cpp.o -c /home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/output.cpp",
+  "file": "/home/danielramaa/Documents/2025-26/DA/Projeto2/DA2026_PRJ2_T14_G4/Code/src/output.cpp",
+  "output": "CMakeFiles/myProg.dir/src/output.cpp.o"
+}
+]

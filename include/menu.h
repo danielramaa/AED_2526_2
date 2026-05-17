@@ -18,7 +18,7 @@ void runInteractiveMenu();
 /**
  * @brief Runs the tool in batch mode.
  *
- * Matches the invocation described in §4.1 of the project handout:
+ * Matches the invocation described.
  * `myProg -b ranges.txt registers.txt allocation.txt`.
  *
  * Parses both inputs, attempts the allocation requested by the

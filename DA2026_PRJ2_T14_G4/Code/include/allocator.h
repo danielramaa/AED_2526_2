@@ -2,7 +2,7 @@
  * @file allocator.h
  * @brief Top-level register allocation API.
  *
- * The three algorithm variants requested by the project handout are exposed
+ * The three algorithm variants requested are exposed
  * as plain functions taking the parsed @ref InputData and returning an
  * @ref AllocationResult. Web construction and graph colouring live in
  * web.cpp / allocator.cpp respectively.
@@ -33,7 +33,7 @@ struct WebAssignment {
  *
  * Even on infeasible runs the `webs` vector is populated so callers can
  * still emit a syntactically valid output file with every web mapped to
- * memory (per §3.5 of the handout).
+ * memory.
  */
 struct AllocationResult {
     bool feasible = false;
@@ -44,7 +44,7 @@ struct AllocationResult {
 };
 
 /**
- * @brief T2.1 — straight graph colouring with the @c basic algorithm.
+ * @brief straight graph colouring with the @c basic algorithm.
  *
  * Iterates N from 1 to @c config.numRegisters and returns the smallest N for
  * which Chaitin-style simplification succeeds.
@@ -55,7 +55,7 @@ struct AllocationResult {
 AllocationResult allocateBasic(const InputData& input);
 
 /**
- * @brief T2.2 — colouring with up to @c config.algorithmParam spilled webs.
+ * @brief colouring with up to @c config.algorithmParam spilled webs.
  *
  * Spill selection rule: each round picks the web with the largest residual
  * degree (most interferences) among the still-allocated webs. Rationale:
@@ -87,7 +87,7 @@ AllocationResult allocateSpilling(const InputData& input);
 AllocationResult allocateSplitting(const InputData& input);
 
 /**
- * @brief T2.4 — Free algorithm: hybrid split-then-spill heuristic.
+ * @brief Free algorithm: hybrid split-then-spill heuristic.
  *
  * No numeric parameter. At every colouring failure we pick the
  * highest-degree still-active web in the interference graph and:

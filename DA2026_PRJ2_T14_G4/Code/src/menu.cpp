@@ -163,7 +163,7 @@ int runAllocation(const AppState& s, std::ostream& err) {
     dumpAllocationSummary(err, result);
 
     if (!result.feasible) {
-        // Per §3.5, when allocation is infeasible we must also issue a
+        // When allocation is infeasible we must also issue a
         // warning to the console.
         err << "Warning: register allocation infeasible — webs spilled to memory.\n";
         return 1;
@@ -224,7 +224,7 @@ void handleInteractiveChoice(AppState& s, const std::string& choice, bool& shoul
     else std::cout << "Unknown choice: \"" << choice << "\"\n";
 }
 
-} // namespace
+}
 
 void runInteractiveMenu() {
     AppState state;

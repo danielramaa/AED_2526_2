@@ -2,7 +2,7 @@
  * @file allocator.h
  * @brief Top-level register allocation API.
  *
- * The three algorithm variants requested by the project handout are exposed
+ * The three algorithm variants requested  are exposed
  * as plain functions taking the parsed @ref InputData and returning an
  * @ref AllocationResult. Web construction and graph colouring live in
  * web.cpp / allocator.cpp respectively.
@@ -33,7 +33,7 @@ struct WebAssignment {
  *
  * Even on infeasible runs the `webs` vector is populated so callers can
  * still emit a syntactically valid output file with every web mapped to
- * memory (per §3.5 of the handout).
+ * memory.
  */
 struct AllocationResult {
     bool feasible = false;

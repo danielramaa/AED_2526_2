@@ -3,7 +3,7 @@
  * @brief Application entry point. Dispatches to either the interactive menu
  *        or the batch mode based on the command-line arguments.
  *
- * Batch invocation (§4.1 of the handout):
+ * Batch invocatiion
  *     myProg -b ranges.txt registers.txt allocation.txt
  *
  * Anything else (no arguments, or arguments without -b) starts the
