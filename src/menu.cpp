@@ -243,7 +243,6 @@ void runInteractiveMenu() {
         if (choice.empty()) continue;
         handleInteractiveChoice(state, choice, done);
     }
-    std::cout << "Bye.\n";
 }
 
 int runBatchMode(const std::string& rangesFile,
