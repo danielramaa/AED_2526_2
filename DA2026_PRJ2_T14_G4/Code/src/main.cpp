@@ -3,7 +3,7 @@
  * @brief Application entry point. Dispatches to either the interactive menu
  *        or the batch mode based on the command-line arguments.
  *
- * Batch invocation:
+ * Batch invocatiion
  *     myProg -b ranges.txt registers.txt allocation.txt
  *
  * Anything else (no arguments, or arguments without -b) starts the
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
         return runBatchMode(argv[2], argv[3], argv[4]);
     }
     if (argc >= 2) {
-        // Unknown flag, show usage but still drop into the menu so the
+        // Unknown flag — show usage but still drop into the menu so the
         // executable remains demo-friendly.
         std::cerr << "Note: unrecognised argument \"" << argv[1]
                   << "\", starting interactive menu.\n";

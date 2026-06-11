@@ -10,6 +10,8 @@
 
 namespace {
 
+/// Formats a single web point per §3.1 
+///
 /// When a merged web has BOTH `isDef` and `isLastUse` at the same line the
 /// value is being used and redefined on the same instruction (think
 /// `i = i + 1`): the web flows through that point so it is shown bare,
@@ -37,7 +39,7 @@ std::string formatWebPoints(const Web& w) {
     return s;
 }
 
-} 
+} // namespace
 
 void writeAllocation(std::ostream& os, const AllocationResult& result) {
     os << "# Total number of webs followed by the listing of the program points of each one\n";

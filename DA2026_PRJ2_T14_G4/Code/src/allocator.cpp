@@ -175,7 +175,7 @@ int pickHighestDegreeMultiSubWeb(const std::vector<Web>& webs,
     return best;
 }
 
-}
+} // namespace
 
 AllocationResult allocateBasic(const InputData& input) {
     auto webs = buildWebs(input.variables);
@@ -298,9 +298,9 @@ AllocationResult allocateFree(const InputData& input) {
 
         // Colouring failed: we prefer splitting over spilling because
         // splitting keeps the value in registers. Strategy:
-        //   1- try to find a splittable web (>= 2 sub-webs) that still
+        //   1) try to find a splittable web (>= 2 sub-webs) that still
         //      participates in an interference — if any, split it;
-        //   2- otherwise fall back to spilling the highest-degree
+        //   2) otherwise fall back to spilling the highest-degree
         //      atomic web.
         int splitCandidate = pickHighestDegreeMultiSubWeb(webs, excluded);
         if (splitCandidate >= 0 && groups[splitCandidate].size() >= 2) {
@@ -316,7 +316,7 @@ AllocationResult allocateFree(const InputData& input) {
             continue;
         }
 
-        // No splittable candidate, fall back to spilling.
+        // No splittable candidate — fall back to spilling.
         int spillCandidate = pickHighestDegreeWeb(webs, excluded);
         if (spillCandidate < 0) break;   // nothing more we can do
         for (int sid : webs[spillCandidate].subWebIds) {
@@ -325,7 +325,7 @@ AllocationResult allocateFree(const InputData& input) {
         ++spillCount;
     }
 
-    // We only get here in pathological cases (ex: K == 0 with non-empty
+    // We only get here in pathological cases (e.g. K == 0 with non-empty
     // input). Report every web as spilled.
     auto webs = buildWebsFromGroups(groups, subwebs);
     return makeInfeasibleResult(std::move(webs),

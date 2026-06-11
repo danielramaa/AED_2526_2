@@ -2,7 +2,7 @@
  * @file Graph.h
  * @brief Templated graph data structure provided by the DA TP classes.
  *
- * Used as-is as the primary
+ * Used as-is  as the primary
  * representation of the interference graph. Vertex info is `int` in this
  * project (web id); edges are bidirectional with weight 1.
  *

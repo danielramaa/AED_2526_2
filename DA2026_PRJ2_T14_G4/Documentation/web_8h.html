@@ -122,7 +122,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ac9557a74d92b564b24bc9114c07d2251" id="r_ac9557a74d92b564b24bc9114c07d2251"><td class="memItemLeft">std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac9557a74d92b564b24bc9114c07d2251">buildWebs</a> (const std::vector&lt; <a class="el" href="structVariable.html">Variable</a> &gt; &amp;variables)</td></tr>
 <tr class="memdesc:ac9557a74d92b564b24bc9114c07d2251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience entry point: subwebs -&gt; groups -&gt; webs in one call.  <br /></td></tr>
 <tr class="memitem:a61bc1c5f69fe7bbc4e02f6505d543c14" id="r_a61bc1c5f69fe7bbc4e02f6505d543c14"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a61bc1c5f69fe7bbc4e02f6505d543c14">websInterfere</a> (const <a class="el" href="structWeb.html">Web</a> &amp;a, const <a class="el" href="structWeb.html">Web</a> &amp;b)</td></tr>
-<tr class="memdesc:a61bc1c5f69fe7bbc4e02f6505d543c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pairwise interference test using the def/last-use exception described in §2.5 of the handout: two webs do NOT interfere at a shared point X iff one of them is being defined-only there and the other is being last-used-only there.  <br /></td></tr>
+<tr class="memdesc:a61bc1c5f69fe7bbc4e02f6505d543c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pairwise interference test using the def/last-use exception two webs do NOT interfere at a shared point X iff one of them is being defined-only there and the other is being last-used-only there.  <br /></td></tr>
 <tr class="memitem:a117900f923d80cc1884eaa64b9daf0fb" id="r_a117900f923d80cc1884eaa64b9daf0fb"><td class="memItemLeft"><a class="el" href="classGraph.html">Graph</a>&lt; int &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a117900f923d80cc1884eaa64b9daf0fb">buildInterferenceGraph</a> (const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs)</td></tr>
 <tr class="memdesc:a117900f923d80cc1884eaa64b9daf0fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the interference graph on the provided webs using the TP <a class="el" href="classGraph.html">Graph</a> class.  <br /></td></tr>
 <tr class="memitem:a125590bfbfe3f8537911e84d12749dc1" id="r_a125590bfbfe3f8537911e84d12749dc1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a125590bfbfe3f8537911e84d12749dc1">printGraphAscii</a> (std::ostream &amp;os, const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs)</td></tr>
@@ -288,7 +288,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pairwise interference test using the def/last-use exception described in §2.5 of the handout: two webs do NOT interfere at a shared point X iff one of them is being defined-only there and the other is being last-used-only there. </p>
+<p>Pairwise interference test using the def/last-use exception two webs do NOT interfere at a shared point X iff one of them is being defined-only there and the other is being last-used-only there. </p>
 <p>They DO interfere as soon as any shared point is not such a clean handoff.</p>
 <p>Complexity: O(|A.points| + |B.points|) using the points' sortedness. </p>
 

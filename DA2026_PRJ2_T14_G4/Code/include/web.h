@@ -94,7 +94,7 @@ std::vector<Web> buildWebs(const std::vector<Variable>& variables);
 
 /**
  * @brief Pairwise interference test using the def/last-use exception
- *        described: two webs do NOT interfere at a
+ *       two webs do NOT interfere at a
  *        shared point X iff one of them is being defined-only there and the
  *        other is being last-used-only there. They DO interfere as soon as
  *        any shared point is not such a clean handoff.

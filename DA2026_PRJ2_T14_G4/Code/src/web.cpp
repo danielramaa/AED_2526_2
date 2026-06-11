@@ -143,7 +143,7 @@ bool websInterfere(const Web& a, const Web& b) {
         const WebPoint& pa = a.points[i];
         const WebPoint& pb = b.points[j];
 
-        // one of the webs has ONLY a def at this point and
+        // Clean handoff: one of the webs has ONLY a def at this point and
         // the other has ONLY a last-use. Any other combination (both
         // intermediate, both def, both last-use, def+lastuse on the same
         // web etc.) means both webs are simultaneously live and therefore
@@ -191,7 +191,7 @@ std::string pointsLabel(const Web& w) {
     return s;
 }
 
-} 
+} // namespace
 
 void printGraphAscii(std::ostream& os, const std::vector<Web>& webs) {
     int totalEdges = 0;

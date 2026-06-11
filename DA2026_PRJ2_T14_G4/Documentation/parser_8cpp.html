@@ -105,9 +105,9 @@ $(function(){initNavTree('parser_8cpp.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab2f5e60014c3d404b073f22e445fb365" id="r_ab2f5e60014c3d404b073f22e445fb365"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab2f5e60014c3d404b073f22e445fb365">parseRanges</a> (const std::string &amp;path, std::vector&lt; <a class="el" href="structVariable.html">Variable</a> &gt; &amp;variables, std::string &amp;error)</td></tr>
-<tr class="memdesc:ab2f5e60014c3d404b073f22e445fb365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a live-ranges input file (format described in §3.1 of the project handout).  <br /></td></tr>
+<tr class="memdesc:ab2f5e60014c3d404b073f22e445fb365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a live-ranges input file.  <br /></td></tr>
 <tr class="memitem:ab89aaeca35e37a0f85391a1cc46550df" id="r_ab89aaeca35e37a0f85391a1cc46550df"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab89aaeca35e37a0f85391a1cc46550df">parseRegisters</a> (const std::string &amp;path, <a class="el" href="structRegisterConfig.html">RegisterConfig</a> &amp;config, std::string &amp;error)</td></tr>
-<tr class="memdesc:ab89aaeca35e37a0f85391a1cc46550df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a register-configuration file (format described in §3.4 of the project handout).  <br /></td></tr>
+<tr class="memdesc:ab89aaeca35e37a0f85391a1cc46550df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a register-configuration file.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of the live-ranges and register-configuration parsers. </p>
@@ -136,7 +136,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Parses a live-ranges input file (format described in §3.1 of the project handout). </p>
+<p>Parses a live-ranges input file. </p>
 <p>Lines beginning with <span class="tt">#</span> and blank lines are ignored. Each non-comment line has the form <span class="tt">name: tok1, tok2, ...</span> where every <span class="tt">tok</span> is a non-negative integer optionally suffixed with <span class="tt">+</span> (start / definition) and/or <span class="tt">-</span> (end / last use).</p>
 <p>On success <code class="param">variables</code> is filled with one <a class="el" href="structVariable.html" title="A variable as named in the source program, together with all the live ranges parsed for it.">Variable</a> per distinct name (preserving the order of first appearance) and each <a class="el" href="structVariable.html" title="A variable as named in the source program, together with all the live ranges parsed for it.">Variable</a> contains one <a class="el" href="structLiveRange.html" title="A live range as it appears on one input line.">LiveRange</a> per input line it appeared on.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -176,7 +176,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Parses a register-configuration file (format described in §3.4 of the project handout). </p>
+<p>Parses a register-configuration file. </p>
 <p>Expected entries: <span class="tt">registers: N</span> and <span class="tt">algorithm: &lt;kind&gt;[, K]</span> where <span class="tt">&lt;kind&gt;</span> is one of <span class="tt">basic</span>, <span class="tt">spilling</span>, <span class="tt">splitting</span>, <span class="tt">free</span>. Comments (<span class="tt">#</span>) and blank lines are tolerated and the order of the two entries is irrelevant.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

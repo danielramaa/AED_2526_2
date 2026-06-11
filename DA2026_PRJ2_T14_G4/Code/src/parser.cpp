@@ -61,7 +61,8 @@ bool parseToken(const std::string& tok, ProgramPoint& out) {
     return true;
 }
 
-}
+} // namespace
+
 bool parseRanges(const std::string& path,
                  std::vector<Variable>& variables,
                  std::string& error) {
@@ -194,7 +195,7 @@ bool parseAlgorithm(const std::string& value,
     return true;
 }
 
-} 
+} // namespace
 
 bool parseRegisters(const std::string& path,
                     RegisterConfig& config,
